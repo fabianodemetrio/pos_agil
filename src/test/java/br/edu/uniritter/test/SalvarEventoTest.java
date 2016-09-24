@@ -11,7 +11,7 @@ import org.junit.Test;
 import br.edu.uniritter.Evento;
 import br.edu.uniritter.Formulario;
 
-public class salvarEventoTest {
+public class SalvarEventoTest {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	Date date = new Date();
 	Calendar cal = Calendar.getInstance();
