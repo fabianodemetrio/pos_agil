@@ -8,8 +8,8 @@ import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.edu.uniritter.Evento;
-import br.edu.uniritter.Formulario;
+import br.edu.uniritter.model.Evento;
+import br.edu.uniritter.service.EventoService;
 
 public class SalvarEventoTest {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -18,24 +18,24 @@ public class SalvarEventoTest {
 
 	@Test
 	public void salvarEventoMaiorQue150Caracteres() {
-		Assert.assertEquals(false, new Formulario().salvar(new Evento("Evento MUITO GRANDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee", cal.getTime())));
+		Assert.assertEquals(false, new EventoService().salvar(new Evento("Evento MUITO GRANDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee", cal.getTime())));
 	}
 	
 	@Test
 	public void salvarEventoMenorQue150Caracteres() {
-		Assert.assertEquals(true, new Formulario().salvar(new Evento("Evento X", cal.getTime())));
+		Assert.assertEquals(true, new EventoService().salvar(new Evento("Evento X", cal.getTime())));
 	}
 	
 	@Test
 	public void salvarEventoIgualQue150Caracteres() {
-		Assert.assertEquals(true, new Formulario().salvar(new Evento("EventoCom150Caracteres:grandeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", cal.getTime())));
+		Assert.assertEquals(true, new EventoService().salvar(new Evento("EventoCom150Caracteres:grandeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", cal.getTime())));
 	}
 	
 	 @Test
 	public void salvarEventoDataMenorQueAtual() {
 		try{
 			date = sdf.parse("16/09/2015");
-			Assert.assertEquals(false, new Formulario().salvar(new Evento("Evento", date)));
+			Assert.assertEquals(false, new EventoService().salvar(new Evento("Evento", date)));
 		} catch (ParseException ignore) {
 		}
 	}
@@ -46,11 +46,11 @@ public class SalvarEventoTest {
 			date = sdf.parse("12/12/2020");
 		} catch (ParseException ignore) {
 		}
-		Assert.assertEquals(true, new Formulario().salvar(new Evento("Evento X", date)));
+		Assert.assertEquals(true, new EventoService().salvar(new Evento("Evento X", date)));
 	}
 	
 	@Test
 	public void salvarEventoDataIgualQueAtual() {
-		Assert.assertEquals(true, new Formulario().salvar(new Evento("Evento X", cal.getTime())));
+		Assert.assertEquals(true, new EventoService().salvar(new Evento("Evento X", cal.getTime())));
 	}
 }

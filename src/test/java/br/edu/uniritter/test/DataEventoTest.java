@@ -1,4 +1,5 @@
 package br.edu.uniritter.test;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -6,16 +7,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import br.edu.uniritter.Formulario;
+import br.edu.uniritter.service.EventoService;
 
 public class DataEventoTest {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	@Test
 	public void dataEventoMenorQueAtual() {
 		try {
-			Assert.assertEquals(true, new Formulario().dataEventoMaiorAtual(sdf.parse("16/09/2016")));
+			Assert.assertEquals(true, new EventoService().dataEventoMaiorAtual(sdf
+					.parse("16/09/2016")));
 		} catch (ParseException ignore) {
+
 		}
 	}
 
@@ -26,16 +29,12 @@ public class DataEventoTest {
 			date = sdf.parse("18/09/2019");
 		} catch (ParseException ignore) {
 		}
-		Assert.assertEquals(false, new Formulario().dataEventoMaiorAtual(date));
+		Assert.assertEquals(false, new EventoService().dataEventoMaiorAtual(date));
 	}
-	
+
 	@Test
 	public void dataEventoIgualQueAtual() {
-		Date date = new Date();
-		try {
-			date = sdf.parse(sdf.format(new Date()));
-		} catch (ParseException ignore) {
-		}
-		Assert.assertEquals(false, new Formulario().dataEventoMaiorAtual(date));
+		Assert.assertEquals(false,
+				new EventoService().dataEventoMaiorAtual(new Date()));
 	}
 }

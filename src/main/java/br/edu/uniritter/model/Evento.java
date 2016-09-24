@@ -1,4 +1,4 @@
-package br.edu.uniritter;
+package br.edu.uniritter.model;
 
 import java.util.Date;
 
