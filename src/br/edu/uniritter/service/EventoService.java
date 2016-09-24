@@ -11,13 +11,12 @@ public class EventoService {
 		this.validador = validator;
 	}
 
-	public boolean salvar(Evento evento) {
-		return this.validador.validate(evento);
+	public boolean criar(Evento evento) {
+		return salvar(evento);
 	}
 
-	public boolean criar(Evento evento) {
-		salvar(evento);
-		return true;
+	public boolean salvar(Evento evento) {
+		return this.validador.validate(evento);
 	}
 
 }
