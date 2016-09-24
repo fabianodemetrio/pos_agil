@@ -1,21 +1,21 @@
 package br.edu.uniritter.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Evento {
-	private Date data;
+	private LocalDate data;
 	private String nome;
 
-	public Evento(String nomeEvento, Date dataEvento) {
+	public Evento(String nomeEvento, LocalDate dataEvento) {
 		this.nome = nomeEvento;
 		this.data = dataEvento;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 

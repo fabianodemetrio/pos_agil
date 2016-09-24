@@ -1,8 +1,6 @@
 package br.edu.uniritter.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 import br.edu.uniritter.model.Evento;
 
@@ -12,15 +10,8 @@ public class EventoService {
 		return (nomeEvento.length() > 150);
 	}
 
-	public boolean dataEventoMaiorAtual(Date dataEvento) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date data = new Date();
-		try {
-			data = sdf.parse(sdf.format(new Date()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return dataEvento.before(data);
+	public boolean dataEventoMaiorAtual(LocalDate dataEvento) {
+		return dataEvento.isBefore(LocalDate.now());
 	}
 
 	public boolean salvar(Evento evento) {
