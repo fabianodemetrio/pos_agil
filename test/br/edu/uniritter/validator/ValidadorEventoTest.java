@@ -6,12 +6,10 @@ import static org.junit.Assert.fail;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.uniritter.exceptions.ValidacaoEventoException;
-import br.edu.uniritter.validator.ValidadorEvento;
+import br.edu.uniritter.exception.ValidacaoEventoException;
 
 public class ValidadorEventoTest {
 
@@ -30,22 +28,27 @@ public class ValidadorEventoTest {
 
 	
 	@Test
-	public void dataEventoMenorQueAtual() {
-		Assert.assertEquals(true,this.validador.validaDataEvento(LocalDate.now().minusDays(1L)));
+	public void deveGerarErroQuandoDataMenorAtual() {
+		try{
+			this.validador.validaDataEvento(LocalDate.now().minusDays(1L));
+			fail("deveGerarErroQuandoDataMenorAtual deveria falhar");
+		}catch (ValidacaoEventoException e){
+			assertEquals("A data do evento deve ser igual ou maior que a de hoje",e.getMessage());
+		}
 	}
 
 	@Test
-	public void dataEventoMaiorQueAtual() {
-		Assert.assertEquals(false, this.validador.validaDataEvento(LocalDate.now().plusDays(1L)));
+	public void devePassarQuandoDataMaiorAtual() {
+		this.validador.validaDataEvento(LocalDate.now().plusDays(1L));
 	}
 
 	@Test
-	public void dataEventoIgualQueAtual() {
-		Assert.assertEquals(false,this.validador.validaDataEvento(LocalDate.now()));
+	public void devePassarQuandoDataIgualAtual() {
+		this.validador.validaDataEvento(LocalDate.now());
 	}
 
 	@Test
-	public void deveGerarErroQuandoNomeEventoMaiorQue150Caracteres() {
+	public void deveGerarErroQuandoNomeEventoMaior150Caracteres() {
 		try {
 			this.validador.validaNomeEvento(caracteres(151));
 			fail("deveGerarErroQuandoNomeEventoMaiorQue150Caracteres deveria falhar!");
@@ -55,11 +58,11 @@ public class ValidadorEventoTest {
 	}
 
 	@Test
-	public void nomeDoEventoMenorQue150Caracteres() {
+	public void devePassarNomeEventoMenor150Caracteres() {
 		this.validador.validaNomeEvento(caracteres(50));
 	}
 
-	public void nomeDoEventoIgual150Caracteres() {
+	public void devePassarNomeEventoIgual150Caracteres() {
 		this.validador.validaNomeEvento(caracteres(150));
 	}
 }

@@ -1,4 +1,4 @@
-package br.edu.uniritter.exceptions;
+package br.edu.uniritter.exception;
 
 public class ValidacaoEventoException extends RuntimeException {
 	public ValidacaoEventoException(String mensagemErro) {

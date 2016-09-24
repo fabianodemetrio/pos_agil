@@ -1,4 +1,4 @@
-package br.edu.uniritter;
+package br.edu.uniritter.service;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import br.edu.uniritter.model.Evento;
 import br.edu.uniritter.service.EventoService;
 import br.edu.uniritter.validator.ValidadorEvento;
 
-public class SalvarEventoTest {
+public class EventoServiceTest {
 
 	private ValidadorEvento validador;
 

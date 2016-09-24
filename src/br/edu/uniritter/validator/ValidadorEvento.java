@@ -2,7 +2,7 @@ package br.edu.uniritter.validator;
 
 import java.time.LocalDate;
 
-import br.edu.uniritter.exceptions.ValidacaoEventoException;
+import br.edu.uniritter.exception.ValidacaoEventoException;
 import br.edu.uniritter.model.Evento;
 
 public class ValidadorEvento {
@@ -10,12 +10,7 @@ public class ValidadorEvento {
 
 	public boolean validate(Evento evento) {
 		validaNomeEvento(evento.getNome());
-		
-		if (validaDataEvento(evento.getData())) {
-			System.out
-					.println("A data do evento deve ser igual ou maior que a de hoje");
-			return false;
-		}
+		validaDataEvento(evento.getData());
 		return true;
 	}
 
@@ -24,8 +19,9 @@ public class ValidadorEvento {
 			throw new ValidacaoEventoException("O nome permite no máximo 150 caracteres");
 	}
 
-	public boolean validaDataEvento(LocalDate dataEvento) {
-		return dataEvento.isBefore(LocalDate.now());
+	public void validaDataEvento(LocalDate dataEvento) throws ValidacaoEventoException{
+		 if (dataEvento.isBefore(LocalDate.now()))
+			 throw new ValidacaoEventoException("A data do evento deve ser igual ou maior que a de hoje");
 	}
 
 }
