@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Evento {
 	private Date data;
-	private String nome = "";
+	private String nome;
 
 	public Evento(String nomeEvento, Date dataEvento) {
 		this.nome = nomeEvento;
