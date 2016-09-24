@@ -13,7 +13,7 @@ public class DataEventoTest {
 	private ValidadorEvento validador;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		this.validador = new ValidadorEvento();
 	}
 
@@ -24,7 +24,6 @@ public class DataEventoTest {
 
 	@Test
 	public void dataEventoMaiorQueAtual() {
-
 		Assert.assertEquals(false, this.validador.dataEventoMaiorAtual(LocalDate.now().plusDays(1L)));
 	}
 
