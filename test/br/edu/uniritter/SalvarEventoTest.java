@@ -1,4 +1,4 @@
-package br.edu.uniritter.test;
+package br.edu.uniritter;
 
 import java.time.LocalDate;
 import java.util.Arrays;
