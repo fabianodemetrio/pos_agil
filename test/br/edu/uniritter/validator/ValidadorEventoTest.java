@@ -25,7 +25,6 @@ public class ValidadorEventoTest {
 		Arrays.fill(caracteres, 'T');
 		return new String(caracteres);
 	}
-
 	
 	@Test
 	public void deveGerarErroQuandoDataMenorAtual() {

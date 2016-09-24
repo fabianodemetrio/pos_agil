@@ -3,10 +3,11 @@ package br.edu.uniritter.service;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.edu.uniritter.exception.ValidacaoEventoException;
 import br.edu.uniritter.model.Evento;
 import br.edu.uniritter.service.EventoService;
 import br.edu.uniritter.validator.ValidadorEvento;
@@ -17,7 +18,7 @@ public class EventoServiceTest {
 
 	private String caracteres(int tamanho) {
 		char[] caracteres = new char[tamanho];
-		Arrays.fill(caracteres, 'F');
+		Arrays.fill(caracteres, 'T');
 		return new String(caracteres);
 	}
 
@@ -27,41 +28,50 @@ public class EventoServiceTest {
 	}
 
 	@Test
-	public void salvarEventoMaiorQue150Caracteres() {
-		Assert.assertEquals(false, new EventoService(this.validador)
-				.criar(new Evento(caracteres(200), LocalDate.now())));
+	public void deveGerarErroSalvarEventoMaiorQue150Caracteres() {
+		try {
+			new EventoService(this.validador).criar(new Evento(caracteres(200), LocalDate.now()));
+			fail("deveGerarErroSalvarEventoMaiorQue150Caracteres deveria falhar!");
+		} catch (ValidacaoEventoException e) {
+			assertEquals("O nome permite no máximo 150 caracteres",
+					e.getMessage());
+		}
 	}
 
 	@Test
-	public void salvarEventoMenorQue150Caracteres() {
-		Assert.assertEquals(true, new EventoService(this.validador)
-				.criar(new Evento(caracteres(149), LocalDate.now())));
+	public void devePassarSalvarEventoMenorQue150Caracteres() {
+		new EventoService(this.validador).criar(new Evento(caracteres(149),
+				LocalDate.now()));
 	}
 
 	@Test
-	public void salvarEventoIgualQue150Caracteres() {
-		Assert.assertEquals(true, new EventoService(this.validador)
-				.criar(new Evento(caracteres(150), LocalDate.now())));
+	public void devePassarSalvarEventoIgualQue150Caracteres() {
+		new EventoService(this.validador).criar(new Evento(caracteres(150),
+				LocalDate.now()));
 	}
 
 	@Test
-	public void salvarEventoDataMenorQueAtual() {
-		Assert.assertEquals(false, new EventoService(this.validador)
-				.criar(new Evento(caracteres(149), LocalDate.now()
-						.minusDays(1L))));
+	public void deveGerarErroSalvarEventoDataMenorQueAtual() {
+		try {
+			new EventoService(this.validador).criar(new Evento(caracteres(150),
+					LocalDate.now().minusDays(1L)));
+			fail("deveGerarErroSalvarEventoDataMenorQueAtual deveria falhar!");
+		} catch (ValidacaoEventoException e) {
+			assertEquals(
+					"A data do evento deve ser igual ou maior que a de hoje",
+					e.getMessage());
+		}
 	}
 
 	@Test
-	public void salvarEventoDataMaiorQueAtual() {
-
-		Assert.assertEquals(true,
-				new EventoService(this.validador).criar(new Evento(
-						caracteres(149), LocalDate.now().plusDays(1L))));
+	public void devePassarSalvarEventoDataMaiorQueAtual() {
+		new EventoService(this.validador).criar(new Evento(caracteres(149),
+				LocalDate.now().plusDays(1L)));
 	}
 
 	@Test
-	public void salvarEventoDataIgualQueAtual() {
-		Assert.assertEquals(true, new EventoService(this.validador)
-				.criar(new Evento(caracteres(149), LocalDate.now())));
+	public void devePassarSalvarEventoDataIgualQueAtual() {
+		new EventoService(this.validador).criar(new Evento(caracteres(149),
+				LocalDate.now()));
 	}
 }

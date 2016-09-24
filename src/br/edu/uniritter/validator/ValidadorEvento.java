@@ -8,10 +8,9 @@ import br.edu.uniritter.model.Evento;
 public class ValidadorEvento {
 	private static final int QTD_MAX_CARACTERES = 150;
 
-	public boolean validate(Evento evento) {
+	public void validate(Evento evento){
 		validaNomeEvento(evento.getNome());
 		validaDataEvento(evento.getData());
-		return true;
 	}
 
 	public void validaNomeEvento(String nomeEvento) throws ValidacaoEventoException{
