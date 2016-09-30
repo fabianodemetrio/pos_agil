@@ -13,10 +13,11 @@ public class Evento {
 
 	private String nome;
 
-	public Evento(String nomeEvento, LocalDate dataEvento,
-			LocalDate dataFinalEvento) {
+	public Evento(String nomeEvento, LocalDate dataEvento, LocalDate dataInicialVenda, LocalDate dataFinalVenda) {
 		this.nome = nomeEvento;
 		this.data = dataEvento;
+		this.dataInicialVenda = dataInicialVenda;
+		this.dataFinalVenda = dataFinalVenda;
 	}
 
 	public LocalDate getDataInicialVenda() {
