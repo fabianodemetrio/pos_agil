@@ -169,7 +169,7 @@ public class EventoServiceTest {
 			fail("deveGerarErroSalvarEventoIngressosIguais deveria falhar!");
 		} catch (ValidacaoEventoException e) {
 			assertEquals(
-					"A data de início de venda deve ser inferior a data de fim",
+					"Não é permitido repetir ingressos",
 					e.getMessage());
 		}
 
