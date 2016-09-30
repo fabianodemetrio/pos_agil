@@ -7,7 +7,7 @@ import br.edu.uniritter.model.evento.Evento;
 
 public class ValidadorEvento {
 	private static final String MSG_DATA_EVENTO_IGUAL_MAIOR = "A data do evento deve ser igual ou maior que a de hoje";
-	private static final String MSG_DATA_VENDA_INVALIDA = "A data de início de venda deve ser inferior à data final";
+	private static final String MSG_DATA_VENDA_INVALIDA = "A data de início de venda deve ser inferior a data de fim";
 	private static final String MSG_MAX_CARACTERES = "O nome permite no máximo 150 caracteres";
 	private static final int QTD_MAX_CARACTERES = 150;
 

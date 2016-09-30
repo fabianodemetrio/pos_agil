@@ -65,4 +65,6 @@ public class ValidadorEventoTest {
 	public void devePassarNomeEventoIgual150Caracteres() {
 		this.validador.validaNomeEvento(caracteres(150));
 	}
+	
+	
 }
