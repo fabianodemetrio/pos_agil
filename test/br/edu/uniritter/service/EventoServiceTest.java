@@ -30,48 +30,40 @@ public class EventoServiceTest {
 	@Test
 	public void deveGerarErroSalvarEventoMaiorQue150Caracteres() {
 		try {
-			new EventoService(this.validador).criar(new Evento(caracteres(200), LocalDate.now()));
+			new EventoService(this.validador).criar(new Evento(caracteres(200), LocalDate.now(), LocalDate.now().plusDays(7L)));
 			fail("deveGerarErroSalvarEventoMaiorQue150Caracteres deveria falhar!");
 		} catch (ValidacaoEventoException e) {
-			assertEquals("O nome permite no máximo 150 caracteres",
-					e.getMessage());
+			assertEquals("O nome permite no máximo 150 caracteres", e.getMessage());
 		}
 	}
 
 	@Test
 	public void devePassarSalvarEventoMenorQue150Caracteres() {
-		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now()));
+		new EventoService(this.validador).criar(new Evento(caracteres(149), LocalDate.now(), LocalDate.now().plusDays(7L)));
 	}
 
 	@Test
 	public void devePassarSalvarEventoIgualQue150Caracteres() {
-		new EventoService(this.validador).criar(new Evento(caracteres(150),
-				LocalDate.now()));
+		new EventoService(this.validador).criar(new Evento(caracteres(150), LocalDate.now(), LocalDate.now().plusDays(7L)));
 	}
 
 	@Test
 	public void deveGerarErroSalvarEventoDataMenorQueAtual() {
 		try {
-			new EventoService(this.validador).criar(new Evento(caracteres(150),
-					LocalDate.now().minusDays(1L)));
+			new EventoService(this.validador).criar(new Evento(caracteres(150), LocalDate.now().minusDays(1L), LocalDate.now().plusDays(7L)));
 			fail("deveGerarErroSalvarEventoDataMenorQueAtual deveria falhar!");
 		} catch (ValidacaoEventoException e) {
-			assertEquals(
-					"A data do evento deve ser igual ou maior que a de hoje",
-					e.getMessage());
+			assertEquals("A data do evento deve ser igual ou maior que a de hoje",e.getMessage());
 		}
 	}
 
 	@Test
 	public void devePassarSalvarEventoDataMaiorQueAtual() {
-		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now().plusDays(1L)));
+		new EventoService(this.validador).criar(new Evento(caracteres(149), LocalDate.now().plusDays(1L), LocalDate.now().plusDays(7L)));
 	}
 
 	@Test
 	public void devePassarSalvarEventoDataIgualQueAtual() {
-		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now()));
+		new EventoService(this.validador).criar(new Evento(caracteres(149), LocalDate.now(), LocalDate.now().plusDays(7L)));
 	}
 }

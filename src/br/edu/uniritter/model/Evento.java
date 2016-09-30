@@ -3,20 +3,30 @@ package br.edu.uniritter.model;
 import java.time.LocalDate;
 
 public class Evento {
-	private LocalDate data;
+	private LocalDate dataInicio;
+	private LocalDate dataFinal;
 	private String nome;
 
-	public Evento(String nomeEvento, LocalDate dataEvento) {
+	public Evento(String nomeEvento, LocalDate dataInicioEvento, LocalDate dataFinalEvento) {
 		this.nome = nomeEvento;
-		this.data = dataEvento;
+		this.dataInicio = dataInicioEvento;
+		this.dataFinal = dataFinalEvento;
 	}
 
-	public LocalDate getData() {
-		return data;
+	public LocalDate getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(LocalDate dataFinal) {
+		this.dataFinal = dataFinal;
 	}
 
 	public String getNome() {
