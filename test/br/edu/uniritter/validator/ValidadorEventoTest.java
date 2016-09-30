@@ -29,7 +29,7 @@ public class ValidadorEventoTest {
 	@Test
 	public void deveGerarErroQuandoDataMenorAtual() {
 		try{
-			this.validador.validaDataInicioEvento(LocalDate.now().minusDays(1L));
+			this.validador.validaDataEvento(LocalDate.now().minusDays(1L));
 			fail("deveGerarErroQuandoDataMenorAtual deveria falhar");
 		}catch (ValidacaoEventoException e){
 			assertEquals("A data do evento deve ser igual ou maior que a de hoje",e.getMessage());
@@ -38,12 +38,12 @@ public class ValidadorEventoTest {
 
 	@Test
 	public void devePassarQuandoDataMaiorAtual() {
-		this.validador.validaDataInicioEvento(LocalDate.now().plusDays(1L));
+		this.validador.validaDataEvento(LocalDate.now().plusDays(1L));
 	}
 
 	@Test
 	public void devePassarQuandoDataIgualAtual() {
-		this.validador.validaDataInicioEvento(LocalDate.now());
+		this.validador.validaDataEvento(LocalDate.now());
 	}
 
 	@Test
@@ -61,6 +61,7 @@ public class ValidadorEventoTest {
 		this.validador.validaNomeEvento(caracteres(50));
 	}
 
+	@Test
 	public void devePassarNomeEventoIgual150Caracteres() {
 		this.validador.validaNomeEvento(caracteres(150));
 	}

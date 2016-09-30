@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.uniritter.exception.ValidacaoEventoException;
-import br.edu.uniritter.model.Evento;
+import br.edu.uniritter.model.evento.Evento;
 import br.edu.uniritter.service.EventoService;
 import br.edu.uniritter.validator.ValidadorEvento;
 

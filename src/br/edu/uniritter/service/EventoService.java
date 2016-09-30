@@ -1,6 +1,6 @@
 package br.edu.uniritter.service;
 
-import br.edu.uniritter.model.Evento;
+import br.edu.uniritter.model.evento.Evento;
 import br.edu.uniritter.validator.ValidadorEvento;
 
 public class EventoService {
