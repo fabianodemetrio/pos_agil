@@ -31,5 +31,8 @@ public class ValidadorEvento {
 		 if (evento.getDataInicialVenda().isAfter(evento.getDataFinalVenda()))
 			 throw new ValidacaoEventoException(MSG_DATA_VENDA_INVALIDA);
 	}
+	
+	public void validaIngressos(Evento evento){
+	}
 
 }

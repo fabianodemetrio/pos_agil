@@ -14,6 +14,4 @@ public class EventoService {
 	public void criar(Evento evento) {
 		this.validador.validate(evento);
 	}
-
-
 }
