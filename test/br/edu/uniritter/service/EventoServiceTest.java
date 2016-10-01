@@ -3,10 +3,10 @@ package br.edu.uniritter.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +42,7 @@ public class EventoServiceTest {
 
 		try {
 			new EventoService(this.validador).criar(new Evento(caracteres(200), LocalDate.now(), LocalDate.now(),
-					LocalDate.now().plusDays(2L), listaIngressos));
+					LocalDate.now().plusDays(2), listaIngressos));
 			fail("deveGerarErroSalvarEventoMaiorQue150Caracteres deveria falhar!");
 		} catch (ValidacaoEventoException e) {
 			assertEquals("O nome permite no máximo 150 caracteres",
@@ -57,7 +57,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoBackstage());
 		listaIngressos.add(new IngressoPlateiaVip());
 		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2L), listaIngressos));
+				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoBackstage());
 		listaIngressos.add(new IngressoPlateiaVip());
 		new EventoService(this.validador).criar(new Evento(caracteres(150),
-				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2L), listaIngressos));
+				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoPlateiaVip());
 		try {
 			new EventoService(this.validador).criar(new Evento(caracteres(150),
-					LocalDate.now().minusDays(1L), LocalDate.now(), LocalDate.now().plusDays(2L), listaIngressos));
+					LocalDate.now().minusDays(1), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
 			fail("deveGerarErroSalvarEventoDataMenorQueAtual deveria falhar!");
 		} catch (ValidacaoEventoException e) {
 			assertEquals(
@@ -94,7 +94,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoBackstage());
 		listaIngressos.add(new IngressoPlateiaVip());
 		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now().plusDays(1L), LocalDate.now(), LocalDate.now().plusDays(2L), listaIngressos));
+				LocalDate.now().plusDays(1), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
 	}
 
 	@Test
@@ -104,7 +104,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoBackstage());
 		listaIngressos.add(new IngressoPlateiaVip());
 		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2L), listaIngressos));
+				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
 	}
 	
 	@Test
@@ -115,7 +115,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoPlateiaVip());
 		try {
 			new EventoService(this.validador).criar(new Evento(caracteres(149),
-					LocalDate.now(), LocalDate.now(), LocalDate.now().minusDays(2L), listaIngressos));
+					LocalDate.now(), LocalDate.now(), LocalDate.now().minusDays(2), listaIngressos));
 			fail("deveGerarErroSalvarEventoDataInicioVendaMenorQueInicio deveria falhar!");
 		} catch (ValidacaoEventoException e) {
 			assertEquals(
@@ -132,7 +132,7 @@ public class EventoServiceTest {
 		listaIngressos.add(new IngressoBackstage());
 		listaIngressos.add(new IngressoPlateiaVip());
 		new EventoService(this.validador).criar(new Evento(caracteres(149),
-				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2L), listaIngressos));
+				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
 	}
 	
 	@Test

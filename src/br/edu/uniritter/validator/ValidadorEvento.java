@@ -1,6 +1,7 @@
 package br.edu.uniritter.validator;
 
-import java.time.LocalDate;
+
+import org.joda.time.LocalDate;
 
 import br.edu.uniritter.exception.ValidacaoEventoException;
 import br.edu.uniritter.model.evento.Evento;

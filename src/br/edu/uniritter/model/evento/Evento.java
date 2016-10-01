@@ -1,7 +1,8 @@
 package br.edu.uniritter.model.evento;
 
-import java.time.LocalDate;
 import java.util.List;
+
+import org.joda.time.LocalDate;
 
 import br.edu.uniritter.model.ingresso.Ingresso;
 

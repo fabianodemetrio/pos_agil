@@ -3,9 +3,9 @@ package br.edu.uniritter.validator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ public class ValidadorEventoTest {
 	@Test
 	public void deveGerarErroQuandoDataMenorAtual() {
 		try{
-			this.validador.validaDataEvento(LocalDate.now().minusDays(1L));
+			this.validador.validaDataEvento(LocalDate.now().minusDays(1));
 			fail("deveGerarErroQuandoDataMenorAtual deveria falhar");
 		}catch (ValidacaoEventoException e){
 			assertEquals("A data do evento deve ser igual ou maior que a de hoje",e.getMessage());
@@ -38,7 +38,7 @@ public class ValidadorEventoTest {
 
 	@Test
 	public void devePassarQuandoDataMaiorAtual() {
-		this.validador.validaDataEvento(LocalDate.now().plusDays(1L));
+		this.validador.validaDataEvento(LocalDate.now().plusDays(1));
 	}
 
 	@Test
