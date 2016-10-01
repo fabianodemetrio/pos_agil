@@ -20,7 +20,7 @@ public class EstrategiaSemDescontoTest {
 	}
 	
 	@Test
-	public void deveCalcularDescontoSubtraindoValorDoIngressoDoPercentualDeDesconto() {
+	public void quandoCalcularDescontoDeveRetornarValorCompleto() {
 		assertEquals(BigDecimal.valueOf(1000.00).setScale(2), desconto.calcular());
 	}
 
