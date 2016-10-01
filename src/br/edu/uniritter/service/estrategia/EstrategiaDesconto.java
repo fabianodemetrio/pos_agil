@@ -1,4 +1,4 @@
-package br.edu.uniritter.model.calculadora;
+package br.edu.uniritter.service.estrategia;
 
 import java.math.BigDecimal;
 

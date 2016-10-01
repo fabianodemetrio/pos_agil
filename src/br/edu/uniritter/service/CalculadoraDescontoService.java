@@ -1,12 +1,14 @@
-package br.edu.uniritter.model.calculadora;
+package br.edu.uniritter.service;
 
 import java.math.BigDecimal;
 
-public class CalculadoraDesconto {
+import br.edu.uniritter.service.estrategia.EstrategiaDesconto;
+
+public class CalculadoraDescontoService {
 
 	private EstrategiaDesconto estrategiaDesconto;
 
-	public CalculadoraDesconto(EstrategiaDesconto estrategiaDesconto) {
+	public CalculadoraDescontoService(EstrategiaDesconto estrategiaDesconto) {
 		this.estrategiaDesconto = estrategiaDesconto;
 	}
 

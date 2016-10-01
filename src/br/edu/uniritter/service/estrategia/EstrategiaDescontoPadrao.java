@@ -1,7 +1,6 @@
-package br.edu.uniritter.model.calculadora;
+package br.edu.uniritter.service.estrategia;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import br.edu.uniritter.model.desconto.Desconto;
 import br.edu.uniritter.model.ingresso.Ingresso;
@@ -19,8 +18,9 @@ public class EstrategiaDescontoPadrao implements EstrategiaDesconto {
 	public BigDecimal calcular() {
 		return this.ingresso
 				.getValor()
-				.subtract(this.ingresso.getValor().multiply(this.desconto.getPorcentagem()))
-				.setScale(2, RoundingMode.HALF_DOWN);
+				.subtract(
+						this.ingresso.getValor().multiply(
+								this.desconto.getPorcentagem())).setScale(2);
 	}
 
 }
