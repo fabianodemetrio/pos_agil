@@ -3,6 +3,7 @@ package br.edu.uniritter.calculadora;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.junit.Test;
 
@@ -16,12 +17,12 @@ public class CalculadoraDescontoTest {
 	
 	@Test
 	public void deveAplicarDescontoGold(){
-		assertEquals(new BigDecimal(250.00), calculaDesconto.calcular(new IngressoVip(), new DescontoGold()));
+		assertEquals(new BigDecimal(250.00).setScale(2,RoundingMode.HALF_DOWN), calculaDesconto.calcular(new IngressoVip(), new DescontoGold()));
 	}
 	
 	@Test
 	public void deveAplicarDescontoSilver(){
-		assertEquals(new BigDecimal(400.00), calculaDesconto.calcular(new IngressoVip(), new DescontoSilver()));
+		assertEquals(new BigDecimal(400.00).setScale(2,RoundingMode.HALF_DOWN), calculaDesconto.calcular(new IngressoVip(), new DescontoSilver()));
 	}
 	
 }
