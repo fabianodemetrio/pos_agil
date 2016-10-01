@@ -33,6 +33,7 @@
 
     <target name="test" depends="jar">
         <junit printsummary="yes" haltonfailure="yes" showoutput="true" >
+        	<formatter type="plain" usefile="false"/>
             <classpath>
                 <path refid="classpath"/>
                 <path refid="application"/>
