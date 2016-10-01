@@ -172,6 +172,17 @@ public class EventoServiceTest {
 					"Nao e permitido repetir ingressos",
 					e.getMessage());
 		}
-
 	}
+	
+	
+	@Test
+	public void deveDescontar() {
+		ArrayList<Ingresso> listaIngressos = new ArrayList<Ingresso>(0);
+		listaIngressos.add(new IngressoVip());
+		listaIngressos.add(new IngressoBackstage());
+		listaIngressos.add(new IngressoPlateiaVip());
+		new EventoService(this.validador).criar(new Evento(caracteres(149),
+				LocalDate.now(), LocalDate.now(), LocalDate.now().plusDays(2), listaIngressos));
+	}
+	
 }
