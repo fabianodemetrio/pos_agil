@@ -52,7 +52,7 @@ public class ValidadorEventoTest {
 			this.validador.validaNomeEvento(caracteres(151));
 			fail("deveGerarErroQuandoNomeEventoMaiorQue150Caracteres deveria falhar!");
 		} catch (ValidacaoEventoException e) {
-			assertEquals("O nome permite no máximo 150 caracteres",e.getMessage());
+			assertEquals("O nome permite no maximo 150 caracteres",e.getMessage());
 		}
 	}
 

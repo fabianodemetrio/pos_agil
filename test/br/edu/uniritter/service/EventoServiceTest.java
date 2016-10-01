@@ -45,7 +45,7 @@ public class EventoServiceTest {
 					LocalDate.now().plusDays(2), listaIngressos));
 			fail("deveGerarErroSalvarEventoMaiorQue150Caracteres deveria falhar!");
 		} catch (ValidacaoEventoException e) {
-			assertEquals("O nome permite no máximo 150 caracteres",
+			assertEquals("O nome permite no maximo 150 caracteres",
 					e.getMessage());
 		}
 	}
@@ -119,7 +119,7 @@ public class EventoServiceTest {
 			fail("deveGerarErroSalvarEventoDataInicioVendaMenorQueInicio deveria falhar!");
 		} catch (ValidacaoEventoException e) {
 			assertEquals(
-					"A data de início de venda deve ser inferior a data de fim",
+					"A data de inicio de venda deve ser inferior a data de fim",
 					e.getMessage());
 		}
 
@@ -169,7 +169,7 @@ public class EventoServiceTest {
 			fail("deveGerarErroSalvarEventoIngressosIguais deveria falhar!");
 		} catch (ValidacaoEventoException e) {
 			assertEquals(
-					"Não é permitido repetir ingressos",
+					"Nao e permitido repetir ingressos",
 					e.getMessage());
 		}
 
