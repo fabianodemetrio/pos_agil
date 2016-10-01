@@ -7,9 +7,7 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.edu.uniritter.model.desconto.DescontoGold;
 import br.edu.uniritter.model.ingresso.IngressoVip;
-import br.edu.uniritter.service.estrategia.EstrategiaDescontoPadrao;
 import br.edu.uniritter.service.estrategia.EstrategiaSemDesconto;
 
 public class EstrategiaSemDescontoTest {
